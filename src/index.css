@@ -1,0 +1,109 @@
+:root{
+  --bg:#f6f8fa;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --text:#0f172a;
+  --accent:#2563eb; /* blue */
+  --accent-2:#0ea5a4; /* teal */
+  --radius:10px;
+  --container:1100px;
+}
+
+/* Reset */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body,#root{height:100%}
+
+body{
+  font-family: Inter, Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial;
+  background:var(--bg);
+  color:var(--text);
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+  font-size:16px;
+}
+
+/* Layout container */
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:24px;
+}
+
+/* App root surface */
+#root{
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Headings */
+h1{font-size:28px;margin-bottom:12px;color:var(--text)}
+h2{font-size:20px;margin-bottom:10px;color:var(--text)}
+
+/* Professional cards */
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow:0 6px 18px rgba(12,16,24,0.06);
+  border:1px solid rgba(15,23,42,0.04);
+}
+
+.card-title{font-weight:600;margin-bottom:8px}
+.card-sub{color:var(--muted);font-size:14px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:8px;font-weight:600;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--accent);color:white}
+.btn-ghost{background:transparent;color:var(--accent);border-color:transparent}
+.btn-outline{background:transparent;color:var(--text);border:1px solid rgba(15,23,42,0.08)}
+.btn:active{transform:translateY(1px)}
+
+/* Forms */
+.form-row{display:flex;flex-direction:column;gap:8px}
+label{font-size:14px;color:var(--muted)}
+input[type="text"], input[type="email"], input[type="password"], textarea, select{
+  padding:10px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;color:var(--text);
+}
+
+/* File upload area (for non-MUI fallbacks) */
+.file-upload{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border-radius:8px;border:1px dashed rgba(15,23,42,0.06);background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));
+}
+.file-btn{padding:10px 12px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:var(--accent);color:#fff}
+
+/* Grid for documents */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid-item{min-height:120px}
+
+@media (max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:640px){.grid{grid-template-columns:1fr}.container{padding:16px}}
+
+/* Simple navbar override for MUI AppBar look improvement */
+.MuiAppBar-root{background:linear-gradient(90deg,var(--card),var(--card));box-shadow:0 6px 18px rgba(12,16,24,0.06);border-bottom:1px solid rgba(15,23,42,0.03)}
+.MuiToolbar-root{gap:12px}
+.brand{font-weight:700;color:var(--accent)}
+
+/* Accessibility focus */
+:focus{outline:3px solid rgba(37,99,235,0.15);outline-offset:2px}
+
+/* Small helpers */
+.muted{color:var(--muted)}
+.text-center{text-align:center}
+
+/* Spinner */
+.spinner{width:20px;height:20px;border-radius:50%;border:3px solid rgba(15,23,42,0.08);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Footer */
+footer{margin-top:auto;padding:18px 0;color:var(--muted);font-size:14px}
+
+/* selection */
+::selection{background:rgba(37,99,235,0.12)}
